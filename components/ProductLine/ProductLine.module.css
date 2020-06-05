@@ -1,0 +1,67 @@
+
+@media screen and (min-width: 768px){
+  .ProductLine {
+    width: 30%;
+    height: 300px;
+    border: 1px black solid;
+    display: flex;
+    flex: 1 1 auto;
+    text-transform: uppercase;
+    position: relative;
+    overflow:hidden;
+    margin: 0 7.5px 15px;
+  }
+  
+  
+  
+}
+@media screen and (max-width: 767px){
+  .ProductLine {
+    width: 80%;
+    height: 200px;
+    margin: 10px 0;
+  }
+  .Image {
+    width: 100%;
+    height: 100%;
+  }
+}
+.Image {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    transition: all 0.9s;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ProductLine:hover .Image{
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2)
+  }
+  .TitleDiv {
+    height: 30%;
+    width: 30%;
+    padding: 0 25px;
+    display: flex; 
+    justify-content: center;
+    flex-flow: column;
+    border: 1px black solid;
+    background-color: #ffffff;
+    cursor: pointer;
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  .Title {
+    margin: 0;
+    padding: 0;
+  }
+

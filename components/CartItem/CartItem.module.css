@@ -1,0 +1,50 @@
+.CartItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.ItemDiv {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.Seperate {
+  height: 1px;
+  width: 100%;
+  background-color: #000;
+}
+
+.ItemDesc {
+  width: 20%;
+}
+.ItemImage {
+  width: 30%;
+}
+
+.ItemName {
+  width: 30%;
+}
+
+.ItemPrice {
+  width: 20%
+}
+
+.ItemQuantity {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ItemTotalPrice{
+  width: 10%;
+}
+
+.Remove {
+  width: 10%;
+}
+

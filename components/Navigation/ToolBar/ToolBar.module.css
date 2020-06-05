@@ -1,0 +1,21 @@
+@media screen and (min-width: 768px){
+.ToolBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+}
+
+.Logo {
+  margin-top: 0;
+  margin-left: 30px;
+}
+
+.Nav {
+
+}
+}
+

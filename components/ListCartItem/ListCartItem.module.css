@@ -1,0 +1,10 @@
+.ListCartItem {
+  background-color: #eceff5 ;
+  box-shadow: 5px;
+}
+
+.Seperate {
+  height: 1px;
+  width: 100%;
+  background-color: #000;
+}

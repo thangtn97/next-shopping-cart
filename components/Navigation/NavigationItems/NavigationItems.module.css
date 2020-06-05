@@ -1,0 +1,12 @@
+.NavigationItems {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 0;
+  margin-right: 30px;
+}
+
+.NavLinks {
+  margin-left: 40px;
+  text-decoration: none;
+  color: #000;
+}
