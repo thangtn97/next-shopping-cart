@@ -14,17 +14,17 @@ const auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const loading = useSelector((state) => state.auth.loading);
   const isLogged = useSelector((state) => state.auth.isLogged);
+  const authRedirectPath = useSelector((state) => state.auth.authRedirectPath);
 
+  {
+    if (isLogged) router.push(authRedirectPath);
+  }
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(authStart(email, password, isLogin));
-          if (isLogged) {
-            console.log("hehe");
-            router.push("/checkout");
-          }
         }}
       >
         <label>email</label>

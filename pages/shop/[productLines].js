@@ -27,7 +27,7 @@ export const getStaticProps = wrapper.getStaticProps(
   }
 );
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   return {
     paths: [
       { params: { productLines: "hats" } },

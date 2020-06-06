@@ -1,10 +1,14 @@
 import styles from "./NavigationItems.module.css";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../../store/actions/actionAuth";
+import { useRouter } from "next/router";
 
 const navigationItems = () => {
   const cart = useSelector((state) => state.cart.cart);
   const isLogged = useSelector((state) => state.auth.isLogged);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const quantity = cart.reduce(
     (quantity, item) => quantity + parseInt(item.quantity),
     0
@@ -16,8 +20,10 @@ const navigationItems = () => {
   );
   if (isLogged) {
     signIn = (
-      <Link href="">
-        <a className={styles.NavLinks}>Sign out</a>
+      <Link href="/">
+        <a onClick={() => dispatch(logout())} className={styles.NavLinks}>
+          Sign out
+        </a>
       </Link>
     );
   }

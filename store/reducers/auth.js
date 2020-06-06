@@ -5,6 +5,7 @@ export const stateAuth = {
   error: null,
   loading: false,
   isLogged: false,
+  authRedirectPath: "/",
 };
 
 const reducer = (state = stateAuth, action) => {
@@ -28,6 +29,18 @@ const reducer = (state = stateAuth, action) => {
         ...state,
         error: action.error,
         loading: false,
+      };
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        token: null,
+        idUser: null,
+        isLogged: false,
+      };
+    case actionTypes.SET_AUTH_REDIRECT_PATH:
+      return {
+        ...state,
+        authRedirectPath: action.path,
       };
     default:
       return state;

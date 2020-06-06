@@ -1,11 +1,11 @@
-import { all, take, call, put, takeLatest } from "redux-saga/effects";
+import { all, delay, call, put, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
 import axios from "axios";
 import {
   fetchProductsSuccess,
   fetchProductsFailed,
 } from "../actions/actionProducts";
-import { authSuccess, authFail } from "../actions/actionAuth";
+import { authSuccess, authFail, logout } from "../actions/actionAuth";
 
 //Products
 //
@@ -40,10 +40,13 @@ function* authenticationStart(action) {
       data: authData,
     });
     yield put(authSuccess(res.data.idToken, res.data.localId));
+    yield delay(res.data.expiresIn * 1000);
+    yield put(logout());
   } catch (error) {
     yield put(authFail(error));
   }
 }
+//
 
 function* rootSaga() {
   yield all([

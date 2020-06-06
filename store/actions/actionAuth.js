@@ -23,3 +23,16 @@ export const authFail = (error) => {
     error,
   };
 };
+
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  };
+};
+
+export const setRedirectPath = (path) => {
+  return {
+    type: actionTypes.SET_AUTH_REDIRECT_PATH,
+    path,
+  };
+};
