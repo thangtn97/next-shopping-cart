@@ -3,15 +3,16 @@ import Layout from "../components/Layout/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { setRedirectPath } from "../store/actions/actionAuth";
-const dispatch = useDispatch();
-const cart = useSelector((state) => state.cart.cart);
-const isLogged = useSelector((state) => state.auth.isLogged);
-const router = useRouter();
-const totalPrice = cart.reduce(
-  (total, current) => total + current.quantity * current.price,
-  0
-);
+
 const OrderSumary = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  const isLogged = useSelector((state) => state.auth.isLogged);
+  const router = useRouter();
+  const totalPrice = cart.reduce(
+    (total, current) => total + current.quantity * current.price,
+    0
+  );
   return (
     <Layout totalItem={cart.totalItem}>
       <div className="div_title">
