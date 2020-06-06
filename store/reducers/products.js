@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 export const stateProducts = {
   products: null,
-  loading: false,
+  loading: true,
   error: null,
 };
 

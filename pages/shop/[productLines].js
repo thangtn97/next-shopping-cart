@@ -3,15 +3,13 @@ import Layout from "../../components/Layout/Layout";
 import { wrapper } from "../../store/store";
 import { fetchDataProducts } from "../../store/actions/actionProducts";
 import { END } from "redux-saga";
-import Spinner from "../../components/UI/Spinner/Spinner";
-import { useSelector } from "react-redux";
 
 const ProductLine = ({ products }) => {
-  let productList = <Spinner />;
-  const loading = useSelector((state) => state.products.loading);
-  if (!loading) productList = <ProductList products={products} />;
-
-  return <Layout>{productList}</Layout>;
+  return (
+    <Layout>
+      <ProductList products={products} />
+    </Layout>
+  );
 };
 
 export const getStaticProps = wrapper.getStaticProps(
@@ -27,7 +25,7 @@ export const getStaticProps = wrapper.getStaticProps(
   }
 );
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return {
     paths: [
       { params: { productLines: "hats" } },

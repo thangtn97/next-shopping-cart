@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { setRedirectPath } from "../store/actions/actionAuth";
+import Button from "../components/UI/Button/Button";
 
 const OrderSumary = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,11 @@ const OrderSumary = () => {
       <span className="seperation"></span>
       <ListCartItem cart={cart} />
       <div className="checkout">
-        <button>Continue Shopping</button>
+        <Button btnType="Success">Continue Shopping</Button>
         <div className="sub-total">Total: ${totalPrice.toFixed(2)}</div>
-        <button
-          onClick={() => {
+        <Button
+          btnType="Danger"
+          clicked={() => {
             if (isLogged) router.push("/checkout");
             else {
               dispatch(setRedirectPath("/checkout"));
@@ -37,7 +39,7 @@ const OrderSumary = () => {
           }}
         >
           Checkout
-        </button>
+        </Button>
       </div>
       <style jsx>{`
         .div_title {
