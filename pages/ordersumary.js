@@ -1,5 +1,4 @@
 import ListCartItem from "../components/ListCartItem/ListCartItem";
-import Layout from "../components/Layout/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { setRedirectPath } from "../store/actions/actionAuth";
@@ -15,7 +14,7 @@ const OrderSumary = () => {
     0
   );
   return (
-    <Layout totalItem={cart.totalItem}>
+    <>
       <div className="div_title">
         <div className="product">Product</div>
         <div className="name">Name</div>
@@ -81,7 +80,7 @@ const OrderSumary = () => {
           text-align: center;
         }
       `}</style>
-    </Layout>
+    </>
   );
 };
 export default OrderSumary;

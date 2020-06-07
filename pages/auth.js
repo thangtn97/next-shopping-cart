@@ -23,7 +23,7 @@ const auth = () => {
     if (isLogged) router.push(authRedirectPath);
   }
   return (
-    <Layout>
+    <>
       <div className="login-form">
         <form
           className="form"
@@ -62,9 +62,6 @@ const auth = () => {
           </Button>
         </form>
         {loading ? <Spinner /> : null}
-        <Link href="/">
-          <a>home</a>
-        </Link>
       </div>
       <style jsx>{`
         .login-form {
@@ -81,7 +78,7 @@ const auth = () => {
           flex-direction: column;
         }
       `}</style>
-    </Layout>
+    </>
   );
 };
 

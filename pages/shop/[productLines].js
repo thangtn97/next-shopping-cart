@@ -5,11 +5,7 @@ import { fetchDataProducts } from "../../store/actions/actionProducts";
 import { END } from "redux-saga";
 
 const ProductLine = ({ products }) => {
-  return (
-    <Layout>
-      <ProductList products={products} />
-    </Layout>
-  );
+  return <ProductList products={products} />;
 };
 
 export const getStaticProps = wrapper.getStaticProps(

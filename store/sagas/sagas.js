@@ -39,6 +39,13 @@ function* authenticationStart(action) {
       url: url,
       data: authData,
     });
+    const expirationDate = new Date(
+      new Date().getTime() + res.data.expiresIn * 1000
+    );
+    localStorage.setItem("token", res.data.idToken);
+    localStorage.setItem("expirationDate", expirationDate);
+    localStorage.setItem("userId", res.data.localId);
+
     yield put(authSuccess(res.data.idToken, res.data.localId));
     yield delay(res.data.expiresIn * 1000);
     yield put(logout());
@@ -46,11 +53,31 @@ function* authenticationStart(action) {
     yield put(authFail(error));
   }
 }
-//
+
+function* authCheckState() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.log("nothing");
+    yield put(logout());
+  } else {
+    const expirationDate = new Date(localStorage.getItem("expirationDate"));
+    console.log("token: ", token);
+    if (expirationDate <= new Date()) {
+      yield put(logout());
+    } else {
+      const userId = localStorage.getItem("userId");
+      console.log(expirationDate.getTime() - new Date().getTime());
+      yield put(authSuccess(token, userId));
+      yield delay(expirationDate.getTime() - new Date().getTime());
+      yield put(logout());
+    }
+  }
+}
 
 function* rootSaga() {
   yield all([
     yield takeLatest(actionTypes.AUTH_START, authenticationStart),
+    yield takeLatest("AUTH_CHECK_STATE", authCheckState),
     yield takeLatest(actionTypes.FETCH_DATA_PRODUCTS, fetchDataProducts),
   ]);
 }

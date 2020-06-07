@@ -28,6 +28,7 @@ const makeStore = (context, initState = initialState) => {
     composeWithDevTools(applyMiddleware(sagaMiddleware))
   );
   store.sagaTask = sagaMiddleware.run(rootSaga);
+
   return store;
 };
 

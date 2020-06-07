@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout/Layout";
 import ProductLine from "../components/ProductLine/ProductLine";
+import { checkAuthState } from "../store/actions/actionAuth";
 
 class Index extends React.Component {
   state = {
@@ -41,7 +41,7 @@ class Index extends React.Component {
   };
   render() {
     return (
-      <Layout>
+      <div>
         <div className="homepage">
           {this.state.productLines.map((prdLine) => (
             <ProductLine
@@ -49,7 +49,6 @@ class Index extends React.Component {
               key={prdLine.id}
               link={prdLine.linkUrl}
               productLine={prdLine}
-              clickProductLineHandle={this.clickProductLineHandle}
             />
           ))}
         </div>
@@ -69,8 +68,13 @@ class Index extends React.Component {
             }
           }
         `}</style>
-      </Layout>
+      </div>
     );
   }
 }
+//const mapDispatchToProps = (dispatch) => {
+//  return {
+//    checkAuthState: () => dispatch(checkAuthState()),
+//  };
+//};
 export default Index;

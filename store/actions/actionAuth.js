@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import { useDispatch } from "react-redux";
 
 export const authStart = (email, password, isLogin) => {
   return {
@@ -25,6 +26,9 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("expirationDate");
+  localStorage.removeItem("userId");
   return {
     type: actionTypes.AUTH_LOGOUT,
   };
@@ -36,3 +40,10 @@ export const setRedirectPath = (path) => {
     path,
   };
 };
+
+export const authCheckState = () => {
+  return {
+    type: "AUTH_CHECK_STATE",
+  };
+};
+
